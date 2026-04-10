@@ -104,8 +104,11 @@ def updateVEGF(VEGFArray, D, chi, lmbd, R, posList, dt, subStep, \
             np.multiply(dt / subStep, logistic(VEGFArray, chi)) - \
             np.multiply(dt / subStep, summation(VEGFArray, posList, \
                         lmbd, R, searchRad, L, meshScale))
-    #Zero-flux boundary conditions
+    
     VEGFArray[:, 0] = VEGFArray[:, 1]
     VEGFArray[:, -1] = VEGFArray[:, -2]
+    VEGFArray[0, :] = VEGFArray[1, :]     
+    VEGFArray[-1, :] = VEGFArray[-2, :]    
+
     #Updated VEGF array with zero-flux boundary conditions
     return VEGFArray

@@ -73,7 +73,7 @@ repeats = 1
 
 #VEGF parameters
 D = 0.1                        #Diffusion constant
-subStep = 1                    #Solver steps per timestep
+subStep = 10                   #Solver steps per timestep
 dx = 1                         #Spacestep (x / μm)
 dy = 1                         #Spacestep (y / μm)
 c0 = 1.0                       #Initial concentration of reactant
@@ -82,8 +82,8 @@ xi = 0.1                       #Sensing parameter
 #Cell parameters
 cellRad = 7.5                          #Cell radius (μm)
 searchRad = 5 * cellRad                #Box size for internalisation (μm)
-leadSpeed = 1                          #Speed of leaders (μm / minute)
-folSpeed = 1.3 * leadSpeed             #Speed of followers (μm / minute)
+leadSpeed = 62.1 / 60                  #Speed of leaders (μm / minute)
+folSpeed = 82.6 / 60                   #Speed of followers (μm / minute)
 chi = 10**-4                           #Logistic production parameter
 epsilon = 2 * cellRad                  #Distance for phenotype switch
 
@@ -92,8 +92,6 @@ lenFiloMax = 6 * cellRad               #Maximum length of cell-cell communicatio
 filoNum = 3                            #Number of filopodia extended per timestep
 
 lmda = 1 * 10**2                       #Internalisation parameter
-chi = 10**-4                           #Logistic production parameter
-epsilon = 2 * cellRad                  #Distance for phenotype switch
 
 #Repeat simulations
 for _ in range(repeats):

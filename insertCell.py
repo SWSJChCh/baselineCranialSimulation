@@ -16,12 +16,7 @@ class leaderCell:
         self.filLength = filLength                    #Filopodium length
         self.attachedTo = 0                           #Attachment ID (0 = None)
         #Create new chain for each leader cell
-        chainList = [i.chain for i in cellList if i.cellType == 'L']
-        if len(chainList) != 0:
-            self.chain = max(chainList) + 1
-        #Chains indexed from 1 (0 = None)
-        else:
-            self.chain = 1
+        self.chain = 1
         self.filoAge   = 0                            #Filopodium age variable
 
 '''
@@ -45,7 +40,7 @@ def initConfiguration(cellList, leadNum, width, radius, filLength):
     #Create leader cells
     for _ in range(leadNum):
         initList.append(leaderCell(radius, filLength, cellList))
-    #Evently distributed y coordinates of leader cells
+    #Evenly distributed y coordinates of leader cells
     yList = list(np.linspace(2 * radius, width - 2 * \
                  radius, len(initList)))
     #Update coordinates of leader cells and append cells to main cell list

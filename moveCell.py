@@ -33,16 +33,7 @@ def moveCells(VEGFArray, cellList, filoNum, lenFilo, lenFiloMax, \
         if not hasattr(i, "angleList"):
             i.angleList = []
 
-        if i.cellType == 'L':
-            # Leaders: resample angles only every filPersist steps
-            if i.filoAge >= filPersist or not i.angleList:
-                i.angleList = [random.uniform(0, 2 * math.pi) for _ in range(filoNum)]
-                i.filoAge = 0
-            else:
-                i.filoAge += 1
-        else:
-            # Followers: resample every step
-            i.angleList = [random.uniform(0, 2 * math.pi) for _ in range(filoNum)]
+        i.angleList = [random.uniform(0, 2 * math.pi) for _ in range(filoNum)]
 
         #Cell is leader
         if i.cellType == 'L':

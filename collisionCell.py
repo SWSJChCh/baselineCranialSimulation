@@ -51,10 +51,18 @@ def detectCollision(i, cellList, dx, dy, filAngle, expLen, cellRad, width, \
                        <= 2 * cellRad:
                 collision = True
                 break
-    if i.x + dx * math.cos(filAngle) < cellRad or i.x + dx * math.cos(filAngle) > \
-        length - cellRad or i.y + dy * math.sin(filAngle) < cellRad or  i.y + dy \
-        * math.sin(filAngle) > width - cellRad:
-            collision = True
+    if i.cellType == 'F': 
+        if i.x + dx * math.cos(filAngle) * folSpeed < cellRad or i.x + dx * \
+        math.cos(filAngle) * folSpeed > length - cellRad or i.y + dy * \
+        math.sin(filAngle) * folSpeed < cellRad or  i.y + dy * \
+        math.sin(filAngle) * folSpeed > width - cellRad:
+                collision = True
+    elif i.cellType == 'L': 
+        if i.x + dx * math.cos(filAngle) * leadSpeed < cellRad or i.x + dx * \
+        math.cos(filAngle) * leadSpeed > length - cellRad or i.y + dy * \
+        math.sin(filAngle) * leadSpeed < cellRad or  i.y + dy * \
+        math.sin(filAngle) * leadSpeed > width - cellRad:
+                collision = True
     #Return Boolean collision variable
     return collision
 
